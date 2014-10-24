@@ -1,0 +1,21 @@
+{
+    "name": "easmith/authoritylabs",
+    "description": "",
+    "minimum-stability": "stable",
+    "license": "LGPL-3.0+",
+    "authors": [
+        {
+            "name": "Eugene Smith",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "version": "1.0.0",
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    }
+}
