@@ -143,6 +143,7 @@ class AuthorityLabs {
      * @param string $keyword Keyword
      * @param string $engine Search engine
      * @param string $locale Locale
+     * @param string $callback Callback URL
      *
      * @return string
      */
@@ -158,8 +159,6 @@ class AuthorityLabs {
 //            'geo' => ''
         ];
 
-        if (!is_null($this->callback)) $params['callback'] = $this->callback;
-
         return $this->request("/keywords", http_build_query($params));
     }
 
@@ -169,10 +168,11 @@ class AuthorityLabs {
      * @param string $keyword Keyword
      * @param string $engine Search engine
      * @param string $locale Search locale
+     * @param string $rankDate Rank date
      *
      * @return mixed
      */
-    public function getResult($keyword, $engine = 'google', $locale = 'en-US')
+    public function getResult($keyword, $engine = 'google', $locale = 'en-US', $rankDate = null)
     {
         $params = [
             'keyword' => $keyword,
@@ -180,7 +180,7 @@ class AuthorityLabs {
             'auth_token' => $this->auth_token,
             'engine' => $engine,
             'locale' => $locale,
-//            'rank_date' => {desired result date},
+            'rank_date' => $rankDate ? $rankDate : date('Y-m-d'),
         ];
 
         $result = $this->request("/keywords/get.json?" . http_build_query($params));
